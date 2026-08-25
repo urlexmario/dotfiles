@@ -11,14 +11,6 @@ vim.opt.smartindent = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.list = true
--- vim.opt.listchars = {
---   eol = '.',
---   tab = '>-',
---   trail = '~',
---   nbsp = '␣',
---   extends = '>',
---   precedes = '<',
--- }
 vim.opt.wrap = false
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -36,4 +28,11 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv('HOME') .. '/.config/nvim/undodir'
 vim.opt.undofile = true
 
+vim.lsp.config['intelephense'] = {
+  cmd = { 'intelephense', '--stdio' }, 
+  filetypes = { 'php', 'blade' },
+  root_markers = { '.git', 'composer.json' }
+}
 
+vim.lsp.enable('intelephense')
+vim.lsp.inlay_hint.enable(true)
