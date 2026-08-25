@@ -36,3 +36,9 @@ vim.lsp.config['intelephense'] = {
 
 vim.lsp.enable('intelephense')
 vim.lsp.inlay_hint.enable(true)
+
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+
+require("config.lazy")
