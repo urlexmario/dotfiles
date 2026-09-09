@@ -42,3 +42,4 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
 
 require("config.lazy")
+vim.cmd.packadd('coc.nvim')
