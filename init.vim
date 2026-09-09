@@ -7,6 +7,8 @@ packadd telescope-fzf-native.nvim
 packadd nvim-treesitter
 packadd tokyonight.nvim
 packadd kanagawa.nvim
+packadd diffview.nvim
+packadd gitsigns.nvim
 
 let mapleader = ','
 let maplocalleader = ','
@@ -156,3 +158,34 @@ require('kanagawa').setup{
 EOF
 
 colorscheme kanagawa
+
+
+lua << EOF
+require('gitsigns').setup{
+  signs = {
+    add          = { text = '│' },
+    change       = { text = '│' },
+    delete       = { text = '_' },
+    topdelete    = { text = '‾' },
+    changedelete = { text = '~' },
+    untracked    = { text = '┆' },
+  },
+  current_line_blame = false, -- auf true stellen falls du inline blame willst
+}
+
+require('diffview').setup{}
+EOF
+
+" Gitsigns Keymaps
+nnoremap <leader>gp <cmd>Gitsigns preview_hunk<cr>
+nnoremap <leader>gb <cmd>Gitsigns toggle_current_line_blame<cr>
+nnoremap ]c <cmd>Gitsigns next_hunk<cr>
+nnoremap [c <cmd>Gitsigns prev_hunk<cr>
+nnoremap <leader>hs <cmd>Gitsigns stage_hunk<cr>
+nnoremap <leader>hr <cmd>Gitsigns reset_hunk<cr>
+
+" Diffview Keymaps
+nnoremap <leader>dv <cmd>DiffviewOpen<cr>
+nnoremap <leader>dc <cmd>DiffviewClose<cr>
+nnoremap <leader>dh <cmd>DiffviewFileHistory<cr>
+nnoremap <leader>dH <cmd>DiffviewFileHistory %<cr>
