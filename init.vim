@@ -9,6 +9,7 @@ packadd tokyonight.nvim
 packadd kanagawa.nvim
 packadd diffview.nvim
 packadd gitsigns.nvim
+packadd lualine.nvim
 
 let mapleader = ','
 let maplocalleader = ','
@@ -189,3 +190,27 @@ nnoremap <leader>dv <cmd>DiffviewOpen<cr>
 nnoremap <leader>dc <cmd>DiffviewClose<cr>
 nnoremap <leader>dh <cmd>DiffviewFileHistory<cr>
 nnoremap <leader>dH <cmd>DiffviewFileHistory %<cr>
+
+
+lua << EOF
+require('lualine').setup{
+  options = {
+    theme = 'tokyonight', -- oder 'kanagawa' -- automatisch passend zum aktuellen colorscheme
+    icons_enabled = true,
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
+    globalstatus = true, -- eine Statuszeile für alle Splits statt pro Fenster
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
+  },
+}
+EOF
+
+
+
